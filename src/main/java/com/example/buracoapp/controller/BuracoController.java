@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 // Imports necessários para a correção de fuso horário
-import java.time.LocalDate;
+import java.time.LocalDateTime; // <-- MUDANÇA: Usando LocalDateTime
 import java.time.ZoneId;
 import java.util.List;
 
@@ -47,10 +47,10 @@ public class BuracoController {
         novoBuraco.setRua(rua);
         novoBuraco.setDescricao(descricao);
         
-        // --- CORREÇÃO APLICADA AQUI ---
-        // Agora, pegamos a data especificamente para o fuso horário de São Paulo,
-        // garantindo que a data salva seja sempre a correta para o Brasil.
-        novoBuraco.setData(LocalDate.now(ZoneId.of("America/Sao_Paulo")));
+        // --- CORREÇÃO FINAL APLICADA AQUI ---
+        // Agora, pegamos a data E HORA especificamente para o fuso horário de São Paulo.
+        // Isso evita a ambiguidade de fuso horário na camada de persistência.
+        novoBuraco.setData(LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
         
         novoBuraco.setAutor(autor);
         

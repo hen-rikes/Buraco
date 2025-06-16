@@ -1,6 +1,6 @@
 package com.example.buracoapp.model.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -30,7 +30,7 @@ public class Buraco {
     private String uf;
     private String cidade;
     private String rua;
-    private LocalDate data;
+    private LocalDateTime data;
     
     @Column(length = 500)
     private String descricao;
